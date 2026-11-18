@@ -2,6 +2,8 @@
 
 Equipe e contribuições: Nelson Rubens Data, versão MySQL e commit:
 
+## Resposta
+
 ## Modelagem e normalização
 
 Cardinalidades, chaves, dependências, formas normais e limitações das FKs.
