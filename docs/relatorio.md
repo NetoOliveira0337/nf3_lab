@@ -1,31 +1,19 @@
-# Relatório NF3
-Equipe e contribuições:
-Data, versão MySQL e commit:
+Relatório NF3
+Equipe e contribuições: Nelson Rubens Data, versão MySQL e commit:
+Respostas
 
-## Modelagem e normalização
-Cardinalidades, chaves, dependências, formas normais e limitações das FKs.
+Esquema lógico: O banco possui as entidades CLIENTE, CLIENTE_PF, CLIENTE_PJ, PEDIDO, PRODUTO, ITEM e ENDERECO_ENTREGA. As PKs identificam os registros e as FKs estabelecem os relacionamentos.
 
-## Consultas
-SQL próprio, resultado esperado, resultado observado, interpretação.
+Cardinalidades e participação:
 
-## Administração
-Plano antes/depois do índice; custo de escrita; view e trigger; permissões.
+CLIENTE e PEDIDO: 1:N. Um cliente pode ter vários pedidos, mas cada pedido pertence a um cliente.
 
-## Transações
-| Cenário | Ordem A/B | Resultado observado | Causa | Correção |
-|---|---|---|---|---|
-| Leitura suja | | | | |
-| Não repetível | | | | |
-| Fantasma | | | | |
-| Atualização perdida | | | | |
-| Bloqueio | | | | |
-| Deadlock | | | | |
+PEDIDO e PRODUTO: N:N, relacionados pela entidade ITEM.
 
-## Recuperação
-Arquivo, checksum, base restaurada, comparação de conteúdo e tempo medido.
+CLIENTE e ENDERECO_ENTREGA: 1:N. Cada endereço pertence a um cliente.
 
-## Modelos e distribuição
-Partição x réplica; desatualização; objetos persistentes; JSON, chave-valor e grafos.
+CLIENTE_PF e CLIENTE_PJ: especialização total e disjunta. Todo cliente deve pertencer a apenas um dos subtipos.
 
-## Limitações e autoria
-Separe medição, simulação e proposta. Não anexar senhas ou .env.
+Totalidade, disjunção e concorrência: As FKs garantem a existência do cliente, mas não impedem que ele esteja nos dois subtipos ou em nenhum. Para evitar isso, pode-se utilizar transações com SELECT FOR UPDATE, verificando a existência de outro subtipo antes da inclusão. A criação do cliente e do subtipo deve ocorrer na mesma transação.
+
+Pedido concluído: A FK entre ITEM e PEDIDO garante que o item pertença a um pedido existente, mas não garante que todo pedido tenha itens. Por isso, antes de concluir um pedido, deve-se verificar se existe pelo menos um item associado.
