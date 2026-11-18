@@ -1,7 +1,6 @@
 # Relatório NF3
 
-Equipe e contribuições: Neto Oliveira (individual).
-Data, versão MySQL e commit: 18/11/2026, MySQL 8.4, 0273bf7.
+Equipe e contribuições: Nelson Rubens Data, versão MySQL e commit:
 
 ## Modelagem e normalização
 
