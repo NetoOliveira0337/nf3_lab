@@ -1,5 +1,3 @@
-Relatório NF3
-Equipe e contribuições: Nelson Rubens Data, versão MySQL e commit:
 Respostas
 
 Esquema lógico: O banco possui as entidades CLIENTE, CLIENTE_PF, CLIENTE_PJ, PEDIDO, PRODUTO, ITEM e ENDERECO_ENTREGA. As PKs identificam os registros e as FKs estabelecem os relacionamentos.
